@@ -134,7 +134,7 @@
     }
     .gallery {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, 1fr); /* Default for wider screens */
       gap: 2rem;
     }
     .card {
@@ -304,8 +304,125 @@
         opacity: 1;
       }
     }
+
+    /* --- RESPONSIVE STYLES (New Additions Below) --- */
+
+    /* For screens smaller than 768px (common tablet portrait / large phone) */
+    @media (max-width: 768px) {
+      .navbar {
+        gap: 1rem; /* Reduce gap between nav items */
+        padding: 0.8rem 0;
+        overflow-x: auto; /* Allow horizontal scrolling if many items */
+        justify-content: flex-start; /* Align to start for scrollable nav */
+      }
+      .navbar a {
+        font-size: 0.8rem; /* Smaller font size for nav links */
+        white-space: nowrap; /* Prevent nav links from wrapping */
+        padding: 0 0.5rem; /* Add some padding for touch targets */
+      }
+
+      .sticky-title {
+        top: 60px; /* Adjust position for smaller screens */
+        right: 15px;
+        font-size: 1rem;
+      }
+
+      header h1 {
+        font-size: 2.8rem; /* Smaller main heading */
+      }
+      .typing {
+        font-size: 1rem; /* Smaller typing text */
+      }
+
+      .section {
+        padding: 4rem 3vw 3rem; /* Reduce overall padding */
+      }
+      .section h2 {
+        font-size: 2rem; /* Smaller section headings */
+        margin-bottom: 1.5rem;
+      }
+
+      .gallery {
+        grid-template-columns: repeat(1, 1fr); /* Single column for most galleries on small screens */
+        gap: 1.5rem; /* Reduce gap between cards */
+      }
+
+      /* Specific adjustments for grids that had more columns */
+      #posters .gallery,
+      #logos .gallery {
+          grid-template-columns: repeat(2, 1fr); /* 2 columns for posters/logos to keep images a decent size */
+      }
+
+      .card {
+        padding: 0.8rem; /* Slightly less padding inside cards */
+      }
+      .card h3 {
+        font-size: 0.9rem; /* Smaller heading for cards */
+      }
+
+      .contact-form-container {
+        padding: 1.5rem; /* Adjust padding for contact form */
+      }
+    }
+
+    /* For very small screens (phones in portrait mode) */
+    @media (max-width: 480px) {
+      .navbar {
+        gap: 0.5rem; /* Even smaller gap for nav */
+        padding: 0.6rem 0;
+      }
+      .navbar a {
+        font-size: 0.75rem; /* Smallest font size for nav links */
+      }
+
+      .sticky-title {
+        top: 55px;
+        right: 10px;
+        font-size: 0.9rem;
+      }
+
+      header h1 {
+        font-size: 2.2rem;
+      }
+      .typing {
+        font-size: 0.9rem;
+      }
+
+      .section {
+        padding: 3rem 2vw 2rem;
+      }
+      .section h2 {
+        font-size: 1.8rem;
+      }
+
+      .gallery {
+          grid-template-columns: repeat(1, 1fr); /* Force single column on very small screens for all */
+          gap: 1rem;
+      }
+       #posters .gallery,
+       #logos .gallery {
+           grid-template-columns: repeat(1, 1fr); /* Force single column for posters/logos too */
+       }
+
+      .card {
+        padding: 0.7rem;
+      }
+      .card h3 {
+        font-size: 0.85rem;
+      }
+
+      .contact-form-container {
+        padding: 1rem;
+      }
+
+      .contact-form-container .submit-button {
+          padding: 0.7rem 1.5rem;
+          font-size: 1rem;
+      }
+    }
 </style>
 <style>
+    /* ... (Your existing modal styles - no changes needed here) ... */
     .modal {
       position: fixed;
       top: 0;
