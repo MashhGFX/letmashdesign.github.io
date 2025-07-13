@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mashh GFX - Pro Portfolio</title>
   <style>
+    /* Your existing CSS styles go here (including the responsiveness updates) */
     :root {
       --grad-start: #000814;
       --grad-end: #003566;
@@ -132,6 +133,42 @@
       text-transform: uppercase;
       color: #00bfff;
     }
+
+    /* --- NEW CSS FOR ABOUT SECTION --- */
+    .about-content {
+        max-width: 800px; /* Limit width for readability */
+        margin: 0 auto;
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #e0e0e0;
+        background: var(--glass);
+        padding: 2.5rem;
+        border-radius: 15px;
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255,255,255,0.1);
+        box-shadow: 0 0 25px rgba(0, 191, 255, 0.15);
+    }
+
+    .about-content p {
+        margin-bottom: 1.2rem;
+    }
+
+    .about-content strong {
+        color: var(--accent);
+    }
+
+    .about-content a {
+        color: var(--accent);
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s ease;
+    }
+
+    .about-content a:hover {
+        color: #fff;
+    }
+    /* --- END NEW CSS FOR ABOUT SECTION --- */
+
     .gallery {
       display: grid;
       grid-template-columns: repeat(2, 1fr); /* Default for wider screens */
@@ -193,9 +230,9 @@
       text-align: center;
     }
 
-    /* Contact Form Styles */
+    /* Contact Form Styles (Reinstated and adjusted for Netlify Forms) */
     #contact {
-      text-align: center; /* Center the heading */
+      text-align: center;
     }
 
     .contact-form-container {
@@ -211,7 +248,7 @@
 
     .contact-form-container .form-group {
       margin-bottom: 1.5rem;
-      text-align: left; /* Align labels and inputs to the left */
+      text-align: left;
     }
 
     .contact-form-container label {
@@ -243,7 +280,7 @@
     }
 
     .contact-form-container textarea {
-      resize: vertical; /* Allow vertical resizing */
+      resize: vertical;
       min-height: 100px;
     }
 
@@ -251,7 +288,7 @@
       display: inline-block;
       padding: 0.8rem 2rem;
       background: linear-gradient(to right, #00bfff, #00f0ff);
-      color: #001d3d; /* Dark text for contrast */
+      color: #001d3d;
       border: none;
       border-radius: 8px;
       font-size: 1.1rem;
@@ -265,11 +302,12 @@
     .contact-form-container .submit-button:hover {
       transform: translateY(-3px);
       box-shadow: 0 5px 15px rgba(0, 191, 255, 0.4);
-      background: linear-gradient(to right, #00f0ff, #00bfff); /* Slightly reverse gradient on hover */
+      background: linear-gradient(to right, #00f0ff, #00bfff);
     }
 
-    /* Socials Section Styles (formerly youtube-section) */
-    .socials-section { /* Renamed from youtube-section */
+
+    /* Socials Section Styles */
+    .socials-section {
       background: #000814;
       padding: 3rem;
       text-align: center;
@@ -305,74 +343,88 @@
       }
     }
 
-    /* --- RESPONSIVE STYLES (New Additions Below) --- */
+    /* --- RESPONSIVE STYLES --- */
 
     /* For screens smaller than 768px (common tablet portrait / large phone) */
     @media (max-width: 768px) {
       .navbar {
-        gap: 1rem; /* Reduce gap between nav items */
+        gap: 1rem;
         padding: 0.8rem 0;
-        overflow-x: auto; /* Allow horizontal scrolling if many items */
-        justify-content: flex-start; /* Align to start for scrollable nav */
+        overflow-x: auto;
+        justify-content: flex-start;
       }
       .navbar a {
-        font-size: 0.8rem; /* Smaller font size for nav links */
-        white-space: nowrap; /* Prevent nav links from wrapping */
-        padding: 0 0.5rem; /* Add some padding for touch targets */
+        font-size: 0.8rem;
+        white-space: nowrap;
+        padding: 0 0.5rem;
       }
 
       .sticky-title {
-        top: 60px; /* Adjust position for smaller screens */
+        top: 60px;
         right: 15px;
         font-size: 1rem;
       }
 
       header h1 {
-        font-size: 2.8rem; /* Smaller main heading */
+        font-size: 2.8rem;
       }
       .typing {
-        font-size: 1rem; /* Smaller typing text */
+        font-size: 1rem;
       }
 
       .section {
-        padding: 4rem 3vw 3rem; /* Reduce overall padding */
+        padding: 4rem 3vw 3rem;
       }
       .section h2 {
-        font-size: 2rem; /* Smaller section headings */
+        font-size: 2rem;
         margin-bottom: 1.5rem;
       }
 
       .gallery {
-        grid-template-columns: repeat(1, 1fr); /* Single column for most galleries on small screens */
-        gap: 1.5rem; /* Reduce gap between cards */
+        grid-template-columns: repeat(1, 1fr);
+        gap: 1.5rem;
       }
 
-      /* Specific adjustments for grids that had more columns */
       #posters .gallery,
       #logos .gallery {
-          grid-template-columns: repeat(2, 1fr); /* 2 columns for posters/logos to keep images a decent size */
+          grid-template-columns: repeat(2, 1fr);
       }
 
       .card {
-        padding: 0.8rem; /* Slightly less padding inside cards */
+        padding: 0.8rem;
       }
       .card h3 {
-        font-size: 0.9rem; /* Smaller heading for cards */
+        font-size: 0.9rem;
       }
 
       .contact-form-container {
-        padding: 1.5rem; /* Adjust padding for contact form */
+        padding: 1.5rem;
+      }
+
+      .contact-form-container input[type="text"],
+      .contact-form-container input[type="email"],
+      .contact-form-container textarea {
+          font-size: 0.9rem;
+      }
+      .contact-form-container .submit-button {
+          font-size: 1rem;
+          padding: 0.7rem 1.8rem;
+      }
+
+      .about-content {
+          font-size: 1rem;
+          padding: 1.8rem;
       }
     }
 
     /* For very small screens (phones in portrait mode) */
     @media (max-width: 480px) {
       .navbar {
-        gap: 0.5rem; /* Even smaller gap for nav */
+        gap: 0.5rem;
         padding: 0.6rem 0;
       }
       .navbar a {
-        font-size: 0.75rem; /* Smallest font size for nav links */
+        font-size: 0.75rem;
       }
 
       .sticky-title {
@@ -396,12 +448,12 @@
       }
 
       .gallery {
-          grid-template-columns: repeat(1, 1fr); /* Force single column on very small screens for all */
+          grid-template-columns: repeat(1, 1fr);
           gap: 1rem;
       }
        #posters .gallery,
        #logos .gallery {
-           grid-template-columns: repeat(1, 1fr); /* Force single column for posters/logos too */
+           grid-template-columns: repeat(1, 1fr);
        }
 
       .card {
@@ -415,14 +467,24 @@
         padding: 1rem;
       }
 
+      .contact-form-container input[type="text"],
+      .contact-form-container input[type="email"],
+      .contact-form-container textarea {
+          font-size: 0.85rem;
+      }
       .contact-form-container .submit-button {
-          padding: 0.7rem 1.5rem;
-          font-size: 1rem;
+          font-size: 0.9rem;
+          padding: 0.6rem 1.2rem;
+      }
+
+      .about-content {
+          font-size: 0.95rem;
+          padding: 1.5rem;
       }
     }
 </style>
 <style>
-    /* ... (Your existing modal styles - no changes needed here) ... */
+    /* Your existing modal styles - no changes needed here */
     .modal {
       position: fixed;
       top: 0;
@@ -464,11 +526,19 @@
     modal.addEventListener("click", () => {
       modal.classList.remove("show");
     });
+
+    // Disable right-click on images (deterrent)
+    document.querySelectorAll('img').forEach(img => {
+      img.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+      });
+    });
   });
 </script>
 </head>
 <body>
   <div class="navbar">
+    <a href="#about">About</a>
     <a href="#thumbnails">Thumbnails</a>
     <a href="#posters">Posters</a>
     <a href="#logos">Logos</a>
@@ -484,6 +554,22 @@
     <div class="typing">GFX Designer | Thumbnail Pro | Creative Artist</div>
   </header>
 
+  <section class="section" id="about">
+    <h2>About Me</h2>
+    <div class="about-content">
+        <p>Hello! I'm <strong>Mashh</strong>, a third-year Computer Science student with a profound passion for bringing ideas to life through dynamic visual design.</p>
+        <p>My journey into graphic design began with a deep dive into the world of digital creativity, constantly pushing boundaries and refining my craft. I specialize in creating engaging visuals that truly stand out, with a particular focus on the high-octane world of gaming and YouTube content.</p>
+        <p>My expertise covers a wide spectrum of digital art, including:</p>
+        <ul>
+            <li><strong>Eye-catching Gaming Thumbnails:</strong> Designed to maximize click-through rates and capture viewer attention.</li>
+            <li><strong>Impactful Posters:</strong> Crafting compelling visual narratives for events, brands, and personal projects.</li>
+            <li><strong>Seamless YouTube Live Stream Overlays:</strong> Enhancing the professional look and feel of live broadcasts.</li>
+            <li><strong>Comprehensive YouTube & Streaming Graphics:</strong> From channel art to end screens, and all necessary branding elements for streamers.</li>
+        </ul>
+        <p>I'm continuously learning and exploring new design techniques to deliver fresh, innovative, and effective visual solutions. Every project is an opportunity to combine technical precision with creative flair, ensuring your message is not just seen, but remembered.</p>
+        <p style="margin-top: 1.5rem;">Let's collaborate and create something visually spectacular! Feel free to <a href="#contact">get in touch</a> to discuss your next project.</p>
+    </div>
+  </section>
   <section class="section" id="thumbnails">
   <h2>Thumbnails</h2>
   <div class="gallery">
@@ -566,8 +652,8 @@
         <h3>Kraken Killz</h3>
       </div>
       <div class="card">
-        <img src="images/WhatsApp Image 2025-07-06 at 1.38.34 PM.jpeg" alt="Girl YT Banner">
-        <h3>Girl YT Banner</h3>
+        <img src="images/WhatsApp Image 2025-07-06 at 1.38.34 PM.jpeg" alt="Muskan YouTube Banner">
+        <h3>Muskan</h3>
       </div>
     </div>
   </section>
@@ -584,7 +670,7 @@
         <h3>Chauhan Playz (Red)</h3>
       </div>
       <div class="card">
-        <img src="images/WhatsApp Image 2025-07-06 at 1.35.48 PM.jpeg" alt="Chauhan Playz Wallpaper (Car)">
+        <img src="images/WhatsApp Image 2025-07-06 at 1.35.48 PM.jpeg" alt="Chauhan Playz (Car)">
         <h3>Chauhan Playz (Car)</h3>
       </div>
       <div class="card">
@@ -597,11 +683,12 @@
   <section class="section" id="contact">
     <h2>Contact Me</h2>
     <div class="contact-form-container">
-      <p style="margin-bottom: 1.5rem; color: #fff;">
-        <a href="mailto:mashhgfx@gmail.com" style="color: var(--accent); text-decoration: none; font-weight: bold;">mashhgfx@gmail.com</a>
+      <p style="margin-bottom: 1.5rem; color: #e0e0e0;">
+        Ready to collaborate or have a question? Fill out the form below and I'll get back to you!
       </p>
-      <form action="https://formsubmit.co/mashhgfx@gmail.com" method="POST">
-        <input type="hidden" name="_subject" value="New Portfolio Contact from Mashh GFX!">
+      <form name="contact" method="POST" data-netlify="true">
+        <input type="hidden" name="_replyto" value="mashhgfx@gmail.com">
+
         <div class="form-group">
           <label for="name">Name:</label>
           <input type="text" id="name" name="name" required>
@@ -622,7 +709,6 @@
       </form>
     </div>
   </section>
-
   <div class="socials-section" id="socials">
     <p>Checkout <a href="https://www.youtube.com/@mashhgfxartist" target="_blank">YouTube</a> & <a href="https://www.instagram.com/letmashdesign?igsh=OWdiY3k3dWZqMHQ5" target="_blank">Instagram</a> for more information.</p>
   </div>
