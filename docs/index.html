@@ -1,0 +1,1107 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mashh GFX - Pro Portfolio</title>
+  <style>
+    /* Your existing CSS styles go here (including the responsiveness updates) */
+    :root {
+      --grad-start: #000814;
+      --grad-end: #003566;
+      --card-bg: rgba(0, 36, 77, 0.25);
+      --accent: #00bfff;
+      --title-color: #ffffff;
+      --surface: #0a0a0a;
+      --glass: rgba(0, 36, 77, 0.3);
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #000814;
+      color: var(--title-color);
+      overflow-x: hidden;
+    }
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 1rem 0;
+      z-index: 1001;
+      backdrop-filter: blur(10px);
+    }
+    .navbar a {
+      color: #00bfff;
+      text-decoration: none;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      transition: 0.3s ease;
+    }
+    .navbar a:hover {
+      color: #fff;
+      transform: scale(1.1);
+    }
+    .sticky-title {
+      position: fixed;
+      top: 70px;
+      right: 30px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--title-color);
+      z-index: 1000;
+    }
+    header {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: radial-gradient(circle at center, #001d3d, #000814);
+      overflow: hidden;
+      z-index: 1;
+    }
+    .gradient-animation {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        to bottom,
+        #00bfff 0%,
+        #00f0ff 20%,
+        #005f87 40%,
+        #00bfff 60%,
+        #00f0ff 80%,
+        #003566 100%
+      );
+      background-size: 100% 400%;
+      animation: animateGradient 10s ease-in-out infinite;
+      opacity: 0.2;
+      z-index: 0;
+    }
+    @keyframes animateGradient {
+      0% { background-position: 0% 0%; }
+      50% { background-position: 0% 100%; }
+      100% { background-position: 0% 0%; }
+    }
+    header h1 {
+      font-size: 4rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      background: linear-gradient(to right, #00bfff, #00f0ff);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      position: relative;
+      z-index: 1;
+    }
+    .typing {
+      color: #00f0ff;
+      font-size: 1.2rem;
+      margin-top: 1rem;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .section {
+      min-height: 100vh;
+      padding: 6rem 5vw 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: #001d3d;
+      border-top: 2px solid #003566;
+      z-index: 1;
+    }
+    .section:nth-child(even) {
+      background: #000814;
+    }
+    .section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+      color: #00bfff;
+    }
+
+    /* --- NEW CSS FOR ABOUT SECTION --- */
+    .about-content {
+        max-width: 800px; /* Limit width for readability */
+        margin: 0 auto;
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #e0e0e0;
+        background: var(--glass);
+        padding: 2.5rem;
+        border-radius: 15px;
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255,255,255,0.1);
+        box-shadow: 0 0 25px rgba(0, 191, 255, 0.15);
+    }
+
+    .about-content p {
+        margin-bottom: 1.2rem;
+    }
+
+    .about-content strong {
+        color: var(--accent);
+    }
+
+    .about-content a {
+        color: var(--accent);
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s ease;
+    }
+
+    .about-content a:hover {
+        color: #fff;
+    }
+    /* --- END NEW CSS FOR ABOUT SECTION --- */
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* Default for wider screens */
+      gap: 2rem;
+    }
+    .card {
+      position: relative;
+      background: var(--glass);
+      border-radius: 15px;
+      padding: 1rem;
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      overflow: hidden;
+    }
+    .card:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 30px #00f0ff;
+      border: 1px solid #00bfff;
+    }
+    .card img {
+      width: 100%;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+    /* Specific aspect ratio for thumbnails */
+    #thumbnails .card img {
+        aspect-ratio: 16 / 9;
+    }
+    /* Specific aspect ratio for posters */
+    #posters .card img {
+        aspect-ratio: 3 / 4;
+    }
+    /* Specific aspect ratio for logos */
+    #logos .card img {
+        aspect-ratio: 1 / 1;
+    }
+    /* Specific aspect ratio for banners */
+    #banners .card img {
+        aspect-ratio: 2560 / 423; /* YouTube banner safe area ratio */
+    }
+    /* Specific aspect ratio for wallpapers */
+    #wallpapers .card img {
+        aspect-ratio: 16 / 9; /* Common desktop wallpaper ratio */
+    }
+    /* Specific grid layout for posters */
+    #posters .gallery {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    /* Specific grid layout for logos (making them smaller) */
+    #logos .gallery {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .card h3 {
+      margin-top: 0.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--title-color);
+      text-align: center;
+    }
+
+    /* Contact Form Styles (Reinstated and adjusted for Netlify Forms) */
+    #contact {
+      text-align: center;
+    }
+
+    .contact-form-container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 2rem;
+      background: var(--glass);
+      border-radius: 15px;
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 0 20px rgba(0, 191, 255, 0.2);
+    }
+
+    .contact-form-container .form-group {
+      margin-bottom: 1.5rem;
+      text-align: left;
+    }
+
+    .contact-form-container label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+      color: var(--accent);
+    }
+
+    .contact-form-container input[type="text"],
+    .contact-form-container input[type="email"],
+    .contact-form-container textarea {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid #005f87;
+      border-radius: 8px;
+      background-color: rgba(0, 36, 77, 0.5);
+      color: var(--title-color);
+      font-size: 1rem;
+      transition: border-color 0.3s ease, background-color 0.3s ease;
+    }
+
+    .contact-form-container input[type="text"]:focus,
+    .contact-form-container input[type="email"]:focus,
+    .contact-form-container textarea:focus {
+      border-color: #00bfff;
+      background-color: rgba(0, 36, 77, 0.7);
+      outline: none;
+    }
+
+    .contact-form-container textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .contact-form-container .submit-button {
+      display: inline-block;
+      padding: 0.8rem 2rem;
+      background: linear-gradient(to right, #00bfff, #00f0ff);
+      color: #001d3d;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .contact-form-container .submit-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 191, 255, 0.4);
+      background: linear-gradient(to right, #00f0ff, #00bfff);
+    }
+
+
+    /* Socials Section Styles */
+    .socials-section {
+      background: #000814;
+      padding: 3rem;
+      text-align: center;
+    }
+    .socials-section p {
+      font-size: 1.2rem;
+      color: #fff;
+    }
+    .socials-section a {
+      color: #00bfff;
+      text-decoration: none;
+      transition: transform 0.3s ease;
+      display: inline-block;
+      margin: 0 0.5rem;
+    }
+    .socials-section a:hover {
+      transform: scale(1.2) rotate(2deg);
+      color: #00f0ff;
+    }
+
+    .modal img {
+      animation: zoomIn 0.4s ease;
+    }
+
+    @keyframes zoomIn {
+      0% {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    /* --- RESPONSIVE STYLES --- */
+
+    /* For screens smaller than 768px (common tablet portrait / large phone) */
+    @media (max-width: 768px) {
+      .navbar {
+        gap: 1rem;
+        padding: 0.8rem 0;
+        overflow-x: auto;
+        justify-content: flex-start;
+      }
+      .navbar a {
+        font-size: 0.8rem;
+        white-space: nowrap;
+        padding: 0 0.5rem;
+      }
+
+      .sticky-title {
+        top: 60px;
+        right: 15px;
+        font-size: 1rem;
+      }
+
+      header h1 {
+        font-size: 2.8rem;
+      }
+      .typing {
+        font-size: 1rem;
+      }
+
+      .section {
+        padding: 4rem 3vw 3rem;
+      }
+      .section h2 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .gallery {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 1.5rem;
+      }
+
+      #posters .gallery,
+      #logos .gallery {
+          grid-template-columns: repeat(2, 1fr);
+      }
+
+      .card {
+        padding: 0.8rem;
+      }
+      .card h3 {
+        font-size: 0.9rem;
+      }
+
+      .contact-form-container {
+        padding: 1.5rem;
+      }
+
+      .contact-form-container input[type="text"],
+      .contact-form-container input[type="email"],
+      .contact-form-container textarea {
+          font-size: 0.9rem;
+      }
+      .contact-form-container .submit-button {
+          font-size: 1rem;
+          padding: 0.7rem 1.8rem;
+      }
+
+      .about-content {
+          font-size: 1rem;
+          padding: 1.8rem;
+      }
+    }
+
+    /* For very small screens (phones in portrait mode) */
+    @media (max-width: 480px) {
+      .navbar {
+        gap: 0.5rem;
+        padding: 0.6rem 0;
+      }
+      .navbar a {
+        font-size: 0.75rem;
+      }
+
+      .sticky-title {
+        top: 55px;
+        right: 10px;
+        font-size: 0.9rem;
+      }
+
+      header h1 {
+        font-size: 2.2rem;
+      }
+      .typing {
+        font-size: 0.9rem;
+      }
+
+      .section {
+        padding: 3rem 2vw 2rem;
+      }
+      .section h2 {
+        font-size: 1.8rem;
+      }
+
+      .gallery {
+          grid-template-columns: repeat(1, 1fr);
+          gap: 1rem;
+      }
+       #posters .gallery,
+       #logos .gallery {
+           grid-template-columns: repeat(1, 1fr);
+       }
+
+      .card {
+        padding: 0.7rem;
+      }
+      .card h3 {
+        font-size: 0.85rem;
+      }
+
+      .contact-form-container {
+        padding: 1rem;
+      }
+
+      .contact-form-container input[type="text"],
+      .contact-form-container input[type="email"],
+      .contact-form-container textarea {
+          font-size: 0.85rem;
+      }
+      .contact-form-container .submit-button {
+          font-size: 0.9rem;
+          padding: 0.6rem 1.2rem;
+      }
+
+      .about-content {
+          font-size: 0.95rem;
+          padding: 1.5rem;
+      }
+    }
+</style>
+<style>
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      display: none;
+    }
+    .modal img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+      box-shadow: 0 0 30px #00f0ff;
+    }
+    .modal.show {
+      display: flex;
+    }
+</style>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const modal = document.createElement("div");
+    modal.classList.add("modal");
+    const modalImg = document.createElement("img");
+    modal.appendChild(modalImg);
+    document.body.appendChild(modal);
+
+    document.querySelectorAll(".gallery img").forEach((img) => {
+      img.addEventListener("click", () => {
+        modalImg.src = img.src;
+        modal.classList.add("show");
+      });
+    });
+
+    modal.addEventListener("click", () => {
+      modal.classList.remove("show");
+    });
+
+    // Disable right-click on images (deterrent)
+    document.querySelectorAll('img').forEach(img => {
+      img.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+      });
+    });
+  });
+</script>
+</head>
+<body>
+  <div class="navbar">
+    <a href="#about">About</a>
+    <a href="#thumbnails">Thumbnails</a>
+    <a href="#posters">Posters</a>
+    <a href="#logos">Logos</a>
+    <a href="#banners">YT BANNERS</a>
+    <a href="#wallpapers">Wallpapers</a>
+    <a href="#contact">Contact</a>
+    <a href="#socials">Socials</a>
+  </div>
+  <div class="sticky-title">Mashh GFX</div>
+  <header>
+    <div class="gradient-animation"></div>
+    <h1>Mashh GFX</h1>
+    <div class="typing">GFX Designer | Thumbnail Pro | Creative Artist</div>
+  </header>
+
+  <section class="section" id="about">
+    <h2>About Me</h2>
+    <div class="about-content">
+        <p>Hello! I'm <strong>Mashh</strong>, a third-year Computer Science student with a profound passion for bringing ideas to life through dynamic visual design.</p>
+        <p>My journey into graphic design began with a deep dive into the world of digital creativity, constantly pushing boundaries and refining my craft. I specialize in creating engaging visuals that truly stand out, with a particular focus on the high-octane world of gaming and YouTube content.</p>
+        <p>My expertise covers a wide spectrum of digital art, including:</p>
+        <ul>
+            <li><strong>Eye-catching Gaming Thumbnails:</strong> Designed to maximize click-through rates and capture viewer attention.</li>
+            <li><strong>Impactful Posters:</strong> Crafting compelling visual narratives for events, brands, and personal projects.</li>
+            <li><strong>Seamless YouTube Live Stream Overlays:</strong> Enhancing the professional look and feel of live broadcasts.</li>
+            <li><strong>Comprehensive YouTube & Streaming Graphics:</strong> From channel art to end screens, and all necessary branding elements for streamers.</li>
+        </ul>
+        <p>I'm continuously learning and exploring new design techniques to deliver fresh, innovative, and effective visual solutions. Every project is an opportunity to combine technical precision with creative flair, ensuring your message is not just seen, but remembered.</p>
+        <p style="margin-top: 1.5rem;">Let's collaborate and create something visually spectacular! Feel free to <a href="#contact">get in touch</a> to discuss your next project.</p>
+    </div>
+  </section>
+  <section class="section" id="thumbnails">
+  <h2>Thumbnails</h2>
+  <div class="gallery">
+    <div class="card">
+      <img src="images/bgmi.jpeg.jpeg" alt="BGMI Thumbnail">
+      <h3>BGMI</h3>
+    </div>
+    <div class="card">
+      <img src="images/freefire.jpeg.jpeg" alt="Free Fire Thumbnail">
+      <h3>Free Fire</h3>
+    </div>
+    <div class="card">
+      <img src="images/cod.jpeg.jpeg" alt="COD Thumbnail">
+      <h3>Call of Duty</h3>
+    </div>
+    <div class="card">
+      <img src="images/WhatsApp Image 2025-07-06 at 1.30.02 PM.jpeg" alt="Valorant Thumbnail">
+      <h3>Valorant</h3>
+    </div>
+  </div>
+</section>
+
+  <section class="section" id="posters">
+    <h2>Posters</h2>
+    <div class="gallery">
+      <div class="card">
+        <img src="images/WhatsApp Image 2025-07-10 at 10.51.14 PM.jpeg" alt="Terminator Esports Thank You Rehan Poster">
+        <h3>Terminator Esports - Thank you Rehan</h3>
+      </div>
+      <div class="card">
+        <img src="images/WhatsApp Image 2025-07-06 at 1.39.45 PM.jpeg" alt="Terminator Esports Cultose Poster">
+        <h3>Terminator Esports - Cultose</h3>
+      </div>
+      <div class="card">
+        <img src="images/WhatsApp Image 2025-07-06 at 1.39.48 PM.jpeg" alt="Terminator Esports Vamp Birthday Poster">
+        <h3>Terminator Esports - Vamp Birthday</h3>
+      </div>
+      <div class="card">
+        <img src="images/WhatsApp Image 2025-07-06 at 1.45.37 PM.jpeg" alt="Incarnius Esports Mashh Poster">
+        <h3>Incarnius Esports - Mashh GFX Artist</h3>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="logos">
+    <h2>Logos</h2>
+    <div class="gallery">
+      <div class="card">
+        <img src="images/WhatsApp Image 2025-07-06 at 1.37.16 PM (1).jpeg" alt="Kraken Killz Logo">
+        <h3>Kraken Killz</h3>
+      </div>
+      <div class="card">
+        <img src="images/WhatsApp Image 2025-07-06 at 1.37.16 PM.jpeg" alt="One Piece Esports Logo">
+        <h3>One Piece Esports</h3>
+      </div>
+      <div class="card">
+        <img src="images/WhatsApp Image 2025-07-06 at 1.37.17 PM (1).jpeg" alt="Luffy Gaming Logo">
+        <h3>Luffy Gaming</h3>
+      </div>
+      <div class="card">
+        <img src="images/WhatsApp Image 2025-07-06 at 1.37.17 PM.jpeg" alt="Misfit Genesis Logo">
+        <h3>Misfit Genesis</h3>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="banners">
+    <h2>YT BANNERS</h2>
+    <div class="gallery">
+      <div class="card">
+        <img src="images/WhatsApp Image 2025-07-06 at 1.38.35 PM (1).jpeg" alt="Saksham YouTube Banner">
+        <h3>Saksham</h3>
+      </div>
+      <div class="card">
+        <img src="images/WhatsApp Image 2025-07-06 at 1.38.34 PM (1).jpeg" alt="ItzmeLuffy YouTube Banner">
+        <h3>ItzmeLuffy</h3>
+      </div>
+      <div class="card">
+        <img src="images/WhatsApp Image 2025-07-06 at 1.38.35 PM.jpeg" alt="Kraken Killz YouTube Banner">
+        <h3>Kraken Killz</h3>
+      </div>
+      <div class="card">
+        <img src="images/WhatsApp Image 2025-07-06 at 1.38.34 PM.jpeg" alt="Muskan YouTube Banner">
+        <h3>Muskan</h3>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="wallpapers">
+    <h2>Wallpapers</h2>
+    <div class="gallery">
+      <div class="card">
+        <img src="images/WhatsApp Image 2025-07-06 at 1.35.46 PM.jpeg" alt="Chauhan Playz Wallpaper (Dante)">
+        <h3>Chauhan Playz (Dante)</h3>
+      </div>
+      <div class="card">
+        <img src="images/WhatsApp Image 2025-07-06 at 1.35.49 PM.jpeg" alt="Chauhan Playz Wallpaper (Red)">
+        <h3>Chauhan Playz (Red)</h3>
+      </div>
+      <div class="card">
+        <img src="images/WhatsApp Image 2025-07-06 at 1.35.48 PM.jpeg" alt="Chauhan Playz (Car)">
+        <h3>Chauhan Playz (Car)</h3>
+      </div>
+      <div class="card">
+        <img src="images/WhatsApp Image 2025-07-06 at 1.35.49 PM (1).jpeg" alt="Chauhan Playz Wallpaper (Purple)">
+        <h3>Chauhan Playz (Purple)</h3>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+  <h2>Contact Me</h2>
+  <div class="contact-form-container">
+    <p style="margin-bottom: 1.5rem; color: #e0e0e0;">
+      Ready to collaborate or have a question? Fill out the form below and I'll get back to you!
+    </p>
+    <form name="contact" method="POST" data-netlify="true" action="thanks.html">
+      <input type="hidden" name="form-name" value="contact">
+      <input type="hidden" name="_replyto" value="mashhgfx@gmail.com">
+      
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" name="subject">
+      </div>
+      <div class="form-group">
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+      </div>
+      <button type="submit" class="submit-button">Send Message</button>
+    </form>
+  </div>
+</section>
+  <div class="socials-section" id="socials">
+    <p>Checkout <a href="https://www.youtube.com/@mashhgfxartist" target="_blank">YouTube</a> & <a href="https://www.instagram.com/letmashdesign?igsh=OWdiY3k3dWZqMHQ5" target="_blank">Instagram</a> for more information.</p>
+  </div>
+
+  <footer>
+    © 2025 Mashh GFX | All Rights Reserved
+  </footer>
+
+</body>
+</html>
+ransform: scale(0.8);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    /* --- RESPONSIVE STYLES --- */
+
+    /* For screens smaller than 768px (common tablet portrait / large phone) */
+    @media (max-width: 768px) {
+      .navbar {
+        gap: 1rem;
+        padding: 0.8rem 0;
+        overflow-x: auto;
+        justify-content: flex-start;
+      }
+      .navbar a {
+        font-size: 0.8rem;
+        white-space: nowrap;
+        padding: 0 0.5rem;
+      }
+
+      .sticky-title {
+        top: 60px;
+        right: 15px;
+        font-size: 1rem;
+      }
+
+      header h1 {
+        font-size: 2.8rem;
+      }
+      .typing {
+        font-size: 1rem;
+      }
+
+      .section {
+        padding: 4rem 3vw 3rem;
+      }
+      .section h2 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .gallery {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 1.5rem;
+      }
+
+      #posters .gallery,
+      #logos .gallery {
+          grid-template-columns: repeat(2, 1fr);
+      }
+
+      .card {
+        padding: 0.8rem;
+      }
+      .card h3 {
+        font-size: 0.9rem;
+      }
+
+      .contact-form-container {
+        padding: 1.5rem;
+      }
+
+      .contact-form-container input[type="text"],
+      .contact-form-container input[type="email"],
+      .contact-form-container textarea {
+          font-size: 0.9rem;
+      }
+      .contact-form-container .submit-button {
+          font-size: 1rem;
+          padding: 0.7rem 1.8rem;
+      }
+
+      .about-content {
+          font-size: 1rem;
+          padding: 1.8rem;
+      }
+    }
+
+    /* For very small screens (phones in portrait mode) */
+    @media (max-width: 480px) {
+      .navbar {
+        gap: 0.5rem;
+        padding: 0.6rem 0;
+      }
+      .navbar a {
+        font-size: 0.75rem;
+      }
+
+      .sticky-title {
+        top: 55px;
+        right: 10px;
+        font-size: 0.9rem;
+      }
+
+      header h1 {
+        font-size: 2.2rem;
+      }
+      .typing {
+        font-size: 0.9rem;
+      }
+
+      .section {
+        padding: 3rem 2vw 2rem;
+      }
+      .section h2 {
+        font-size: 1.8rem;
+      }
+
+      .gallery {
+          grid-template-columns: repeat(1, 1fr);
+          gap: 1rem;
+      }
+       #posters .gallery,
+       #logos .gallery {
+           grid-template-columns: repeat(1, 1fr);
+       }
+
+      .card {
+        padding: 0.7rem;
+      }
+      .card h3 {
+        font-size: 0.85rem;
+      }
+
+      .contact-form-container {
+        padding: 1rem;
+      }
+
+      .contact-form-container input[type="text"],
+      .contact-form-container input[type="email"],
+      .contact-form-container textarea {
+          font-size: 0.85rem;
+      }
+      .contact-form-container .submit-button {
+          font-size: 0.9rem;
+          padding: 0.6rem 1.2rem;
+      }
+
+      .about-content {
+          font-size: 0.95rem;
+          padding: 1.5rem;
+      }
+    }
+</style>
+<style>
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      display: none;
+    }
+    .modal img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+      box-shadow: 0 0 30px #00f0ff;
+    }
+    .modal.show {
+      display: flex;
+    }
+</style>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const modal = document.createElement("div");
+    modal.classList.add("modal");
+    const modalImg = document.createElement("img");
+    modal.appendChild(modalImg);
+    document.body.appendChild(modal);
+
+    document.querySelectorAll(".gallery img").forEach((img) => {
+      img.addEventListener("click", () => {
+        modalImg.src = img.src;
+        modal.classList.add("show");
+      });
+    });
+
+    modal.addEventListener("click", () => {
+      modal.classList.remove("show");
+    });
+
+    // Disable right-click on images (deterrent)
+    document.querySelectorAll('img').forEach(img => {
+      img.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+      });
+    });
+  });
+</script>
+</head>
+<body>
+  <div class="navbar">
+    <a href="#about">About</a>
+    <a href="#thumbnails">Thumbnails</a>
+    <a href="#posters">Posters</a>
+    <a href="#logos">Logos</a>
+    <a href="#banners">YT BANNERS</a>
+    <a href="#wallpapers">Wallpapers</a>
+    <a href="#contact">Contact</a>
+    <a href="#socials">Socials</a>
+  </div>
+  <div class="sticky-title">Mashh GFX</div>
+  <header>
+    <div class="gradient-animation"></div>
+    <h1>Mashh GFX</h1>
+    <div class="typing">GFX Designer | Thumbnail Pro | Creative Artist</div>
+  </header>
+
+  <section class="section" id="about">
+    <h2>About Me</h2>
+    <div class="about-content">
+        <p>Hello! I'm <strong>Mashh</strong>, a third-year Computer Science student with a profound passion for bringing ideas to life through dynamic visual design.</p>
+        <p>My journey into graphic design began with a deep dive into the world of digital creativity, constantly pushing boundaries and refining my craft. I specialize in creating engaging visuals that truly stand out, with a particular focus on the high-octane world of gaming and YouTube content.</p>
+        <p>My expertise covers a wide spectrum of digital art, including:</p>
+        <ul>
+            <li><strong>Eye-catching Gaming Thumbnails:</strong> Designed to maximize click-through rates and capture viewer attention.</li>
+            <li><strong>Impactful Posters:</strong> Crafting compelling visual narratives for events, brands, and personal projects.</li>
+            <li><strong>Seamless YouTube Live Stream Overlays:</strong> Enhancing the professional look and feel of live broadcasts.</li>
+            <li><strong>Comprehensive YouTube & Streaming Graphics:</strong> From channel art to end screens, and all necessary branding elements for streamers.</li>
+        </ul>
+        <p>I'm continuously learning and exploring new design techniques to deliver fresh, innovative, and effective visual solutions. Every project is an opportunity to combine technical precision with creative flair, ensuring your message is not just seen, but remembered.</p>
+        <p style="margin-top: 1.5rem;">Let's collaborate and create something visually spectacular! Feel free to <a href="#contact">get in touch</a> to discuss your next project.</p>
+    </div>
+  </section>
+  <section class="section" id="thumbnails">
+  <h2>Thumbnails</h2>
+  <div class="gallery">
+    <div class="card">
+      <img src="images/bgmi.jpeg.jpeg" alt="BGMI Thumbnail">
+      <h3>BGMI</h3>
+    </div>
+    <div class="card">
+      <img src="images/freefire.jpeg.jpeg" alt="Free Fire Thumbnail">
+      <h3>Free Fire</h3>
+    </div>
+    <div class="card">
+      <img src="images/cod.jpeg.jpeg" alt="COD Thumbnail">
+      <h3>Call of Duty</h3>
+    </div>
+    <div class="card">
+      <img src="images/WhatsApp Image 2025-07-06 at 1.30.02 PM.jpeg" alt="Valorant Thumbnail">
+      <h3>Valorant</h3>
+    </div>
+  </div>
+</section>
+
+  <section class="section" id="posters">
+    <h2>Posters</h2>
+    <div class="gallery">
+      <div class="card">
+        <img src="images/WhatsApp Image 2025-07-10 at 10.51.14 PM.jpeg" alt="Terminator Esports Thank You Rehan Poster">
+        <h3>Terminator Esports - Thank you Rehan</h3>
+      </div>
+      <div class="card">
+        <img src="images/WhatsApp Image 2025-07-06 at 1.39.45 PM.jpeg" alt="Terminator Esports Cultose Poster">
+        <h3>Terminator Esports - Cultose</h3>
+      </div>
+      <div class="card">
+        <img src="images/WhatsApp Image 2025-07-06 at 1.39.48 PM.jpeg" alt="Terminator Esports Vamp Birthday Poster">
+        <h3>Terminator Esports - Vamp Birthday</h3>
+      </div>
+      <div class="card">
+        <img src="images/WhatsApp Image 2025-07-06 at 1.45.37 PM.jpeg" alt="Incarnius Esports Mashh Poster">
+        <h3>Incarnius Esports - Mashh GFX Artist</h3>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="logos">
+    <h2>Logos</h2>
+    <div class="gallery">
+      <div class="card">
+        <img src="images/WhatsApp Image 2025-07-06 at 1.37.16 PM (1).jpeg" alt="Kraken Killz Logo">
+        <h3>Kraken Killz</h3>
+      </div>
+      <div class="card">
+        <img src="images/WhatsApp Image 2025-07-06 at 1.37.16 PM.jpeg" alt="One Piece Esports Logo">
+        <h3>One Piece Esports</h3>
+      </div>
+      <div class="card">
+        <img src="images/WhatsApp Image 2025-07-06 at 1.37.17 PM (1).jpeg" alt="Luffy Gaming Logo">
+        <h3>Luffy Gaming</h3>
+      </div>
+      <div class="card">
+        <img src="images/WhatsApp Image 2025-07-06 at 1.37.17 PM.jpeg" alt="Misfit Genesis Logo">
+        <h3>Misfit Genesis</h3>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="banners">
+    <h2>YT BANNERS</h2>
+    <div class="gallery">
+      <div class="card">
+        <img src="images/WhatsApp Image 2025-07-06 at 1.38.35 PM (1).jpeg" alt="Saksham YouTube Banner">
+        <h3>Saksham</h3>
+      </div>
+      <div class="card">
+        <img src="images/WhatsApp Image 2025-07-06 at 1.38.34 PM (1).jpeg" alt="ItzmeLuffy YouTube Banner">
+        <h3>ItzmeLuffy</h3>
+      </div>
+      <div class="card">
+        <img src="images/WhatsApp Image 2025-07-06 at 1.38.35 PM.jpeg" alt="Kraken Killz YouTube Banner">
+        <h3>Kraken Killz</h3>
+      </div>
+      <div class="card">
+        <img src="images/WhatsApp Image 2025-07-06 at 1.38.34 PM.jpeg" alt="Muskan YouTube Banner">
+        <h3>Muskan</h3>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="wallpapers">
+    <h2>Wallpapers</h2>
+    <div class="gallery">
+      <div class="card">
+        <img src="images/WhatsApp Image 2025-07-06 at 1.35.46 PM.jpeg" alt="Chauhan Playz Wallpaper (Dante)">
+        <h3>Chauhan Playz (Dante)</h3>
+      </div>
+      <div class="card">
+        <img src="images/WhatsApp Image 2025-07-06 at 1.35.49 PM.jpeg" alt="Chauhan Playz Wallpaper (Red)">
+        <h3>Chauhan Playz (Red)</h3>
+      </div>
+      <div class="card">
+        <img src="images/WhatsApp Image 2025-07-06 at 1.35.48 PM.jpeg" alt="Chauhan Playz (Car)">
+        <h3>Chauhan Playz (Car)</h3>
+      </div>
+      <div class="card">
+        <img src="images/WhatsApp Image 2025-07-06 at 1.35.49 PM (1).jpeg" alt="Chauhan Playz Wallpaper (Purple)">
+        <h3>Chauhan Playz (Purple)</h3>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+  <h2>Contact Me</h2>
+  <div class="contact-form-container">
+    <p style="margin-bottom: 1.5rem; color: #e0e0e0;">
+      Ready to collaborate or have a question? Fill out the form below and I'll get back to you!
+    </p>
+    <form name="contact" method="POST" data-netlify="true" netlify action="thanks.html">
+      <input type="hidden" name="form-name" value="contact">
+      <input type="hidden" name="_replyto" value="mashhgfx@gmail.com">
+      
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" name="subject">
+      </div>
+      <div class="form-group">
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+      </div>
+      <button type="submit" class="submit-button">Send Message</button>
+    </form>
+  </div>
+</section>
+  <div class="socials-section" id="socials">
+    <p>Checkout <a href="https://www.youtube.com/@mashhgfxartist" target="_blank">YouTube</a> & <a href="https://www.instagram.com/letmashdesign?igsh=OWdiY3k3dWZqMHQ5" target="_blank">Instagram</a> for more information.</p>
+  </div>
+
+  <footer>
+    © 2025 Mashh GFX | All Rights Reserved
+  </footer>
+
+</body>
+</html>
