@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thanks for Contacting!</title>
+  <meta http-equiv="refresh" content="5;url=/#contact" />
+  <style>
+    body {
+      background: #0a0a23;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      height: 100vh;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #00ffd5;
+      animation: popIn 1s ease-out forwards;
+    }
+
+    p {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      color: #ccc;
+      animation: fadeIn 1.5s ease-in forwards;
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0.6); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    .small-text {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <h1>Thanks for reaching out! 🙌</h1>
+  <p>I’ll get back to you very soon. You’ll be redirected shortly...</p>
+  <p class="small-text">If not redirected, <a href="/#contact" style="color:#00ffd5;">click here</a>.</p>
+
+  <!-- ✅ Optional success sound (Uncomment if you want) -->
+  <!-- 
+  <audio autoplay>
+    <source src="https://assets.mixkit.co/sfx/preview/mixkit-message-pop-alert-2354.mp3" type="audio/mpeg">
+  </audio>
+  -->
+</body>
+</html>
