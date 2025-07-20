@@ -482,8 +482,6 @@
           padding: 1.5rem;
       }
     }
-</style>
-<style>
     .modal {
       position: fixed;
       top: 0;
@@ -506,34 +504,34 @@
     .modal.show {
       display: flex;
     }
-</style>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const modal = document.createElement("div");
-    modal.classList.add("modal");
-    const modalImg = document.createElement("img");
-    modal.appendChild(modalImg);
-    document.body.appendChild(modal);
+  </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const modal = document.createElement("div");
+      modal.classList.add("modal");
+      const modalImg = document.createElement("img");
+      modal.appendChild(modalImg);
+      document.body.appendChild(modal);
 
-    document.querySelectorAll(".gallery img").forEach((img) => {
-      img.addEventListener("click", () => {
-        modalImg.src = img.src;
-        modal.classList.add("show");
+      document.querySelectorAll(".gallery img").forEach((img) => {
+        img.addEventListener("click", () => {
+          modalImg.src = img.src;
+          modal.classList.add("show");
+        });
+      });
+
+      modal.addEventListener("click", () => {
+        modal.classList.remove("show");
+      });
+
+      // Disable right-click on images (deterrent)
+      document.querySelectorAll('img').forEach(img => {
+        img.addEventListener('contextmenu', function(e) {
+          e.preventDefault();
+        });
       });
     });
-
-    modal.addEventListener("click", () => {
-      modal.classList.remove("show");
-    });
-
-    // Disable right-click on images (deterrent)
-    document.querySelectorAll('img').forEach(img => {
-      img.addEventListener('contextmenu', function(e) {
-        e.preventDefault();
-      });
-    });
-  });
-</script>
+  </script>
 </head>
 <body>
   <div class="navbar">
@@ -583,7 +581,7 @@
     <div class="card">
       <img src="images/cod.jpeg.jpeg" alt="COD Thumbnail">
       <h3>Call of Duty</h3>
-    </div>
+     fungicide</div>
     <div class="card">
       <img src="images/WhatsApp Image 2025-07-06 at 1.30.02 PM.jpeg" alt="Valorant Thumbnail">
       <h3>Valorant</h3>
@@ -685,10 +683,10 @@
     <p style="margin-bottom: 1.5rem; color: #e0e0e0;">
       Ready to collaborate or have a question? Fill out the form below and I'll get back to you!
     </p>
-    <form name="contact" method="POST" data-netlify="true" action="thanks.html">
+    <form name="contact" method="POST" data-netlify="true" netlify action="thanks.html">
       <input type="hidden" name="form-name" value="contact">
       <input type="hidden" name="_replyto" value="mashhgfx@gmail.com">
-      
+
       <div class="form-group">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required>
