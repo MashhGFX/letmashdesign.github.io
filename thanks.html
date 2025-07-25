@@ -3,62 +3,167 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Thanks for Contacting!</title>
+  <title>Thanks for Contacting! - Mashh GFX</title>
   <meta http-equiv="refresh" content="5;url=/#contact" />
   <style>
+    :root {
+      --grad-start: #000814;
+      --grad-end: #003566;
+      --card-bg: rgba(0, 36, 77, 0.25);
+      --accent: #00bfff;
+      --title-color: #ffffff;
+      --surface: #0a0a0a;
+      --glass: rgba(0, 36, 77, 0.3);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
     body {
-      background: #0a0a23;
-      color: #ffffff;
+      background: var(--grad-start);
+      color: var(--title-color);
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      height: 100vh;
-      margin: 0;
+      min-height: 100vh;
       font-family: 'Segoe UI', sans-serif;
       text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .gradient-animation {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        to bottom,
+        #00bfff 0%,
+        #00f0ff 20%,
+        #005f87 40%,
+        #00bfff 60%,
+        #00f0ff 80%,
+        #003566 100%
+      );
+      background-size: 100% 400%;
+      animation: animateGradient 10s ease-in-out infinite;
+      opacity: 0.2;
+      z-index: 0;
+    }
+
+    @keyframes animateGradient {
+      0% { background-position: 0% 0%; }
+      50% { background-position: 0% 100%; }
+      100% { background-position: 0% 0%; }
+    }
+
+    .content-container {
+      background: var(--glass);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 0 35px rgba(0, 191, 255, 0.15);
+      border-radius: 15px;
+      padding: 3rem;
+      max-width: 600px;
+      margin: 2rem;
+      position: relative;
+      z-index: 1;
+      animation: fadeInUp 1.2s ease-out forwards;
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        transform: translateY(20px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
 
     h1 {
-      font-size: 3rem;
-      color: #00ffd5;
-      animation: popIn 1s ease-out forwards;
+      font-size: 2.8rem;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      color: var(--accent);
+      animation: fadeIn 1.5s ease-out forwards;
     }
 
     p {
-      margin-top: 1rem;
-      font-size: 1.2rem;
-      color: #ccc;
-      animation: fadeIn 1.5s ease-in forwards;
-    }
-
-    @keyframes popIn {
-      0% { transform: scale(0.6); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
-    }
-
-    @keyframes fadeIn {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
+      font-size: 1.1rem;
+      color: #e0e0e0;
+      line-height: 1.8;
+      margin: 0.5rem 0;
+      animation: fadeIn 2s ease-out forwards;
     }
 
     .small-text {
       margin-top: 2rem;
       font-size: 0.9rem;
-      color: #666;
+      color: #999;
+      animation: fadeIn 2.4s ease-out forwards;
+    }
+
+    .small-text a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    .small-text a:hover {
+      color: #ffffff;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.2rem;
+      }
+      .content-container {
+        padding: 2rem;
+        margin: 1rem;
+      }
+      p {
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+      .content-container {
+        padding: 1.5rem;
+      }
+      p {
+        font-size: 0.95rem;
+      }
+      .small-text {
+        font-size: 0.8rem;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>Thanks for reaching out! 🙌</h1>
-  <p>I’ll get back to you very soon. You’ll be redirected shortly...</p>
-  <p class="small-text">If not redirected, <a href="/#contact" style="color:#00ffd5;">click here</a>.</p>
-
-  <!-- ✅ Optional success sound (Uncomment if you want) -->
-  <!-- 
-  <audio autoplay>
-    <source src="https://assets.mixkit.co/sfx/preview/mixkit-message-pop-alert-2354.mp3" type="audio/mpeg">
-  </audio>
-  -->
+  <div class="gradient-animation"></div>
+  <div class="content-container">
+    <h1>Thank You for Your Message!</h1>
+    <p>I’ve received your inquiry and truly appreciate you getting in touch.</p>
+    <p>I’ll review it and get back to you as soon as possible.</p>
+    <p class="small-text">If you're not redirected automatically, <a href="/#contact">click here</a> to return to the contact section.</p>
+  </div>
 </body>
 </html>
